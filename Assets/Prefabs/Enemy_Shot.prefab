@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2243588156564364536}
   - component: {fileID: 2243588156564364537}
   - component: {fileID: -3733088714645040175}
+  - component: {fileID: 113559716}
   m_Layer: 0
   m_Name: Enemy_Shot
   m_TagString: Untagged
@@ -107,3 +108,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.2134953, y: 2.3534951}
   m_EdgeRadius: 0
+--- !u!114 &113559716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2243588156564364538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd03386cf3338541a043e47eb818a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 2
+  _target: Player
+  _bulletSpeed: {x: -8, y: 0}

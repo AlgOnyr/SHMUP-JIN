@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    [SerializeField] GameObject _player;
+    GameObject _player;
     BulletGun _bulletGun;
     [SerializeField] float _speed;
 
 
     private void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
         _bulletGun = _player.GetComponent<BulletGun>();
     }
 
