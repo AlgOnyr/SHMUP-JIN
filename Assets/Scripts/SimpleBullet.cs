@@ -22,7 +22,6 @@ public class SimpleBullet : Bullet
     {
         if (collision.CompareTag(_target))
         {
-            Debug.Log(Damage);
             collision.gameObject.SendMessage("TakeDamage", Damage);
             Destroy(gameObject);
         }

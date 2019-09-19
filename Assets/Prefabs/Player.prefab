@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 20
+  _maxSpeed: 0.1
   _energy: 100
 --- !u!114 &441999318
 MonoBehaviour:

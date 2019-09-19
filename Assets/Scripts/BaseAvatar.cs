@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BaseAvatar : MonoBehaviour
 {
@@ -19,32 +20,47 @@ public class BaseAvatar : MonoBehaviour
         set { _maxHealth = value; }
     }
 
-    float _maxSpeed = .1f;
+    [SerializeField] float _maxSpeed = .1f;
     public float MaxSpeed
     {
         get { return _maxSpeed; }
         set { _maxSpeed = value; }
     }
 
+
+    UnityEvent OnDeathEvent;
+
+    void Start()
+    {
+        _health = _maxHealth;
+        if (OnDeathEvent == null)
+            OnDeathEvent = new UnityEvent();
+
+        OnDeathEvent.AddListener(DeathRegister);
+    }
+
+
+
+    protected virtual void DeathRegister()
+    {
+        
+    }
+
+
     void TakeDamage(int damages)
     {
-        Debug.Log("Vie" + _health);
         _health -= damages;
         if (_health <= 0)
         {
-            Debug.Log("Vie " + _health);
             Die();
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
+        OnDeathEvent.Invoke();
         Destroy(gameObject);
     }
 
 
-    private void Start()
-    {
-        _health = _maxHealth;
-    }
 }

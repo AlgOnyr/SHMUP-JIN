@@ -6,28 +6,29 @@ public class InputController : MonoBehaviour
 {
     GameObject _player;
     BulletGun _bulletGun;
-    [SerializeField] float _speed;
+    float _speed;
 
 
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _bulletGun = _player.GetComponent<BulletGun>();
+        _speed = _player.GetComponent<PlayerAvatar>().MaxSpeed;
     }
 
     void Update()
     {
-        float _horizontal = Input.GetAxis("Horizontal");
-        float _vertical = Input.GetAxis("Vertical");
+        float _horizontal = Input.GetAxisRaw("Horizontal");
+        float _vertical = Input.GetAxisRaw("Vertical");
 
         _player.transform.Translate(_speed * new Vector2(_horizontal, _vertical));
-        if (_player.transform.position.y > Screen.height / 2)
+        if (_player.transform.position.y > 3.3f)
         {
-            _player.transform.position = new Vector2( _player.transform.position.x, Screen.height / 2); // Remplacer Screen.height par l'equi en world space
+            _player.transform.position = new Vector2(_player.transform.position.x, 3.3f); // Remplacer Screen.height par l'equi en world space
         }
-        else if (_player.transform.position.y < -Screen.height/2)
+        else if (_player.transform.position.y < -4.5)
         {
-            _player.transform.position = new Vector2(_player.transform.position.x, -Screen.height / 2);
+            _player.transform.position = new Vector2(_player.transform.position.x, -4.5f);
         }
 
 
@@ -35,6 +36,8 @@ public class InputController : MonoBehaviour
         {
             _bulletGun.Fire();
         }
+
+
     }
 
 
